@@ -1,0 +1,10 @@
+{
+  "name": "proxy-env",
+  "version": "1.0.0",
+  "description": "If env is not defined in .env, you will get exception at startup.",
+  "main": "index.ts",
+  "types": "index.d.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
