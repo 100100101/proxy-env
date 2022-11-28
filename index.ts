@@ -1,10 +1,7 @@
-const processEnv = process.env
-type TGet = (
-    target: typeof processEnv,
-    prop: string
-) => boolean | number | string
+import { TGet, TProxyEnv } from './types'
+
 const get: TGet = (target, prop) => {
-    const targetProp = target[prop]
+    const targetProp = process.env[prop]
     // if (prop in target) {}
     if (!targetProp) throw new Error(`process.env not contain '${prop}'`)
 
@@ -39,6 +36,8 @@ const get: TGet = (target, prop) => {
     }
     return targetProp
 }
-export const proxyEnv = new Proxy(processEnv, {
+
+const proxyEnv: TProxyEnv = new Proxy<any>(process.env, {
     get,
 })
+export default proxyEnv
